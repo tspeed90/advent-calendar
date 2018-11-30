@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+}
+
+.days__container {
+  width: 1010px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 200px);
+  grid-template-rows: repeat(7, 200px);
+}
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border: solid 1px black;
+  border-radius: 50%;
+  margin: 3px;
+}
