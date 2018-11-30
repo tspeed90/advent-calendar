@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Day = props => {
-  return <div onClick={() => props.toggleDay(props.index)}>{props.index}</div>;
+  return (
+    <div className="day" onClick={() => props.toggleDay(props.index)}>
+      {props.index}
+    </div>
+  );
 };
 
 export default Day;
