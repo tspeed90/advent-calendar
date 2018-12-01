@@ -10,7 +10,6 @@ export default class Container extends Component {
     this.state = {
       numberOfDays: 25,
       flippedDays: [],
-      unflippedDays: [],
       imageUrls: []
     };
   }
@@ -19,9 +18,16 @@ export default class Container extends Component {
     getPhotos().then(imageUrls => this.setState({ imageUrls }));
   }
 
+  chooseRandomPhoto = () => {
+    const { imageUrls } = this.state;
+    const randomNumber = Math.floor(Math.random() * 40 + 1);
+
+    return imageUrls[randomNumber];
+  };
+
   toggleDay = id => {
     const { flippedDays } = this.state;
-    if (flippedDays.indexOf(id) != 1) {
+    if (flippedDays.indexOf(id) == -1) {
       this.setState({
         flippedDays: [...this.state.flippedDays, id]
       });
@@ -29,7 +35,7 @@ export default class Container extends Component {
   };
 
   createDays = () => {
-    const { numberOfDays } = this.state;
+    const { numberOfDays, flippedDays } = this.state;
     let daysList = [];
 
     for (let i = 1; i <= numberOfDays; i++) {
@@ -38,7 +44,9 @@ export default class Container extends Component {
           id={`day${i}`}
           key={`day${i}`}
           index={i}
+          flipped={flippedDays.includes(i)}
           toggleDay={this.toggleDay}
+          selectPhoto={this.chooseRandomPhoto}
         />
       );
     }
