@@ -15,10 +15,20 @@ export default class Container extends Component {
   }
 
   componentDidMount() {
-    getPhotos()
-      .then(imageUrls => this.shuffleImages(imageUrls))
-      .then(imageUrls => this.setState({ imageUrls }));
+    if (window.localStorage.getItem('calendarState') === null) {
+      getPhotos()
+        .then(imageUrls => this.shuffleImages(imageUrls))
+        .then(imageUrls => this.setPersistentState({ imageUrls }));
+    } else {
+      this.setState(JSON.parse(window.localStorage.getItem('calendarState')));
+    }
   }
+
+  setPersistentState = state => {
+    this.setState(state, () =>
+      window.localStorage.setItem('calendarState', JSON.stringify(this.state))
+    );
+  };
 
   shuffleImages = imageUrls => {
     const shuffledImages = [];
@@ -39,13 +49,13 @@ export default class Container extends Component {
   toggleDay = id => {
     const { flippedDays } = this.state;
     if (flippedDays.indexOf(id) == -1 && this.checkDate(id)) {
-      this.setState({
+      this.setPersistentState({
         flippedDays: [...flippedDays, id]
       });
     } else if (flippedDays.indexOf(id) != -1) {
       let newFlippedDays = [...flippedDays];
       newFlippedDays.splice(flippedDays.indexOf(id), 1);
-      this.setState({
+      this.setPersistentState({
         flippedDays: [...newFlippedDays]
       });
     } else {
