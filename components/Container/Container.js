@@ -30,12 +30,26 @@ export default class Container extends Component {
     return shuffledImages;
   };
 
+  checkDate = id => {
+    const validDate = new Date(2018, 11, id);
+    const currentDate = new Date();
+    return currentDate > validDate;
+  };
+
   toggleDay = id => {
     const { flippedDays } = this.state;
-    if (flippedDays.indexOf(id) == -1) {
+    if (flippedDays.indexOf(id) == -1 && this.checkDate(id)) {
       this.setState({
-        flippedDays: [...this.state.flippedDays, id]
+        flippedDays: [...flippedDays, id]
       });
+    } else if (flippedDays.indexOf(id) != -1) {
+      let newFlippedDays = [...flippedDays];
+      newFlippedDays.splice(flippedDays.indexOf(id), 1);
+      this.setState({
+        flippedDays: [...newFlippedDays]
+      });
+    } else {
+      alert("Uh oh! It's not time to uncover that one yet!");
     }
   };
 
