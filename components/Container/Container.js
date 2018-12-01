@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Day from '../Day/Day';
 import { getPhotos } from '../../utils/getPhotos';
 import './Container.css';
+import bells from '../../audio/sleigh-bells.mp3';
 
 export default class Container extends Component {
   constructor(props) {
@@ -52,6 +53,8 @@ export default class Container extends Component {
       this.setPersistentState({
         flippedDays: [...flippedDays, id]
       });
+      let audio = new Audio(bells);
+      audio.play();
     } else if (flippedDays.indexOf(id) != -1) {
       let newFlippedDays = [...flippedDays];
       newFlippedDays.splice(flippedDays.indexOf(id), 1);
