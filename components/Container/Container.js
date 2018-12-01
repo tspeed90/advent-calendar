@@ -15,14 +15,19 @@ export default class Container extends Component {
   }
 
   componentDidMount() {
-    getPhotos().then(imageUrls => this.setState({ imageUrls }));
+    getPhotos()
+      .then(imageUrls => this.shuffleImages(imageUrls))
+      .then(imageUrls => this.setState({ imageUrls }));
   }
 
-  chooseRandomPhoto = () => {
-    const { imageUrls } = this.state;
-    const randomNumber = Math.floor(Math.random() * 40 + 1);
-
-    return imageUrls[randomNumber];
+  shuffleImages = imageUrls => {
+    const shuffledImages = [];
+    while (imageUrls.length > 0) {
+      const randomNumber = Math.floor(Math.random() * imageUrls.length);
+      shuffledImages.push(imageUrls[randomNumber]);
+      imageUrls.splice(randomNumber, 1);
+    }
+    return shuffledImages;
   };
 
   toggleDay = id => {
@@ -35,7 +40,7 @@ export default class Container extends Component {
   };
 
   createDays = () => {
-    const { numberOfDays, flippedDays } = this.state;
+    const { numberOfDays, flippedDays, imageUrls } = this.state;
     let daysList = [];
 
     for (let i = 1; i <= numberOfDays; i++) {
@@ -46,7 +51,7 @@ export default class Container extends Component {
           index={i}
           flipped={flippedDays.includes(i)}
           toggleDay={this.toggleDay}
-          selectPhoto={this.chooseRandomPhoto}
+          image={imageUrls[i]}
         />
       );
     }
