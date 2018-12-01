@@ -4,10 +4,21 @@
   height: 200px;
 }
 
-.image__container img {
+.image--styled {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.image--shown {
+  visibility: visible;
+  transition: opacity 1s linear;
+}
+
+.image--hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
 }
 
 .number {
