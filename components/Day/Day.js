@@ -4,10 +4,9 @@ import './Day.css';
 const Day = props => {
   return (
     <div
-      className="day"
-      onClick={() => {
-        props.toggleDay(props.index);
-      }}
+      className={props.checkDate(props.index) ? 'day' : 'day day--invalid'}
+      tabIndex="0"
+      onClick={() => props.toggleDay(props.index)}
     >
       <div className="number">{!props.flipped && props.index}</div>
       <div className="image__container">

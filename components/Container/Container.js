@@ -77,6 +77,7 @@ export default class Container extends Component {
           key={`day${i}`}
           index={i}
           flipped={flippedDays.includes(i)}
+          checkDate={this.checkDate}
           toggleDay={this.toggleDay}
           image={imageUrls[i]}
         />
