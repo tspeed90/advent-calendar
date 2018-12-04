@@ -17,13 +17,17 @@ export default class Container extends Component {
 
   componentDidMount() {
     if (window.localStorage.getItem('calendarState') === null) {
-      getPhotos()
+      return getPhotos()
+        .then(responseImages => this.getImageUrls(responseImages))
         .then(imageUrls => this.shuffleImages(imageUrls))
         .then(imageUrls => this.setPersistentState({ imageUrls }));
     } else {
       this.setState(JSON.parse(window.localStorage.getItem('calendarState')));
     }
   }
+
+  getImageUrls = responseImages =>
+    responseImages.results.map(item => item.urls.small);
 
   setPersistentState = state => {
     this.setState(state, () =>
