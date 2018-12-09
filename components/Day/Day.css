@@ -1,7 +1,13 @@
-.image__container {
+.bauble__container {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 232px;
+  height: 232px;
+  background-image: radial-gradient(
+    circle at 150px 60px,
+    #ff6f55,
+    #aa1f00 70px
+  );
+  border-radius: 50%;
 }
 
 .image--styled {
@@ -9,6 +15,27 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.bauble-top {
+  position: absolute;
+  margin: -15px 85px;
+  z-index: 1;
+  height: 20px;
+  width: 60px;
+  background-color: #d4af37;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.bauble-top__container::before {
+  content: ' ';
+  position: absolute;
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: -46px 93px;
+  border: solid 4px #d4af37;
+  border-radius: 50%;
 }
 
 .image--shown {

@@ -9,7 +9,9 @@ const Day = props => {
       onClick={() => props.toggleDay(props.index)}
     >
       <div className="number">{!props.flipped && props.index}</div>
-      <div className="image__container">
+      <div className="bauble__container">
+        <div className="bauble-top__container" />
+        <div className="bauble-top" />
         <img
           src={props.image}
           className={
