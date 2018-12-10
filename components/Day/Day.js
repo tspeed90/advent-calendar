@@ -10,8 +10,9 @@ const Day = props => {
     >
       <div className="number">{!props.flipped && props.index}</div>
       <div className="bauble__container">
-        <div className="bauble-top__container" />
-        <div className="bauble-top" />
+        <div className="bauble-top__container">
+          <div className="bauble-top" />
+        </div>
         <img
           src={props.image}
           className={
