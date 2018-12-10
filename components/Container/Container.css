@@ -10,8 +10,8 @@ h1 {
   margin: 0 auto;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(225px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
 }
 
 .day {
@@ -52,5 +52,15 @@ h1 {
   40%,
   60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 750px) {
+  .days__container {
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(230px, 1fr));
   }
 }

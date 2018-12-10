@@ -17,7 +17,9 @@
   object-fit: cover;
 }
 
-.bauble-top {
+.bauble-top,
+.bauble-top--right,
+.bauble-top--left {
   position: absolute;
   margin: -15px 85px;
   z-index: 1;
@@ -27,7 +29,9 @@
   clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
 }
 
-.bauble-top__container::before {
+.bauble-top__container::before,
+.bauble-top__container--left::before,
+.bauble-top__container--right::before {
   content: ' ';
   position: absolute;
   display: block;
@@ -36,6 +40,15 @@
   margin: -46px 93px;
   border: solid 4px #d4af37;
   border-radius: 50%;
+}
+.bauble-top__container--left {
+  transform-origin: center 140px;
+  transform: rotate(-30deg);
+}
+
+.bauble-top__container--right {
+  transform-origin: center 117px;
+  transform: rotate(130deg);
 }
 
 .image--shown {
