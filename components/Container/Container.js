@@ -93,7 +93,7 @@ export default class Container extends Component {
   render() {
     return (
       <Fragment>
-        <h1>🎄 Let's Count Down to Christmas! 🎄 </h1>
+        <h1>🎄 Christmas Time is Heeeeeere! 🎄 </h1>
         <div className="days__container">{this.createDays()}</div>
       </Fragment>
     );

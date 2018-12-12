@@ -25,8 +25,16 @@
   z-index: 1;
   height: 20px;
   width: 60px;
-  background-color: #d4af37;
-  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  background: linear-gradient(to left, #a68721, #ffde75, #a68721);
+  clip-path: polygon(
+    20% 0,
+    80% 0,
+    100% 100%,
+    70% 80%,
+    50% 100%,
+    30% 80%,
+    0% 100%
+  );
 }
 
 .bauble-top__container::before,
