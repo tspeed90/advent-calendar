@@ -6,6 +6,7 @@ html {
 
 body {
   background-color: #11663a;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 300;
   letter-spacing: 1px;
 }
